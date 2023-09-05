@@ -16,6 +16,6 @@ create table t_member(
 	m_regdate date default sysdate not null -- 가입일
 );
 
-alter table t_member add constraint pk_member primary key (m_id);
+alter table t_member add constraint pk_member primary key (m_num);
 
 drop table t_member;

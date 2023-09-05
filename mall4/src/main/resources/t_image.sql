@@ -10,4 +10,4 @@ create table t_image(
 alter table t_image add constraint pk_image primary key (img_id);
 alter table t_image add constraint img_fk_product foreign key (img_id) references t_product (p_num);
 
-alter table t_image drop constraint imf_fk_product;
+alter table t_image drop constraint img_fk_product;
