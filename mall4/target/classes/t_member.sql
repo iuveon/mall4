@@ -1,5 +1,8 @@
+create sequence seq_member_num;
+
 create table t_member(
-	m_id varchar2(30),
+	m_num number(20),
+	m_id varchar2(30) not null unique,
 	m_pw varchar2(30) not null,
 	m_name varchar2(30) not null,
 	m_email1 varchar2(30) not null,
@@ -14,3 +17,5 @@ create table t_member(
 );
 
 alter table t_member add constraint pk_member primary key (m_id);
+
+drop table t_member;
