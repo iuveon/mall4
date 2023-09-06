@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class BoardVO {
+public class ReviewVO {
 
 	private Long b_num;
 	private String b_title;

@@ -1,4 +1,4 @@
-package com.mall4.controller;
+package com.mall4.persistence;
 
 import static org.junit.Assert.fail;
 

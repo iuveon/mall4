@@ -16,6 +16,17 @@ create table t_member(
 	m_regdate date default sysdate not null -- 가입일
 );
 
-alter table t_member add constraint pk_member primary key (m_id);
+alter table t_member add constraint pk_member primary key (m_num);
 
 drop table t_member;
+
+insert into t_member(m_num, m_id, m_pw, m_name, m_email1, m_email2, m_phone) 
+	 values (seq_member_num.nextval, 'id1', 'pw1', 'name1', 'email1', 'naver.com', '010-0001-0001');
+	 
+insert into t_member(m_num, m_id, m_pw, m_name, m_email1, m_email2, m_phone) 
+	 values (seq_member_num.nextval, 'id2', 'pw2', 'name2', 'email2', 'naver.com', '010-0001-0002');
+	 
+insert into t_member(m_num, m_id, m_pw, m_name, m_email1, m_email2, m_phone) 
+	 values (seq_member_num.nextval, 'id3', 'pw3', 'name3', 'email3', 'naver.com', '010-0001-0003');
+
+select * from t_member;
