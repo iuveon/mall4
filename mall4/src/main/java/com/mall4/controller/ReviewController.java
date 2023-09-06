@@ -29,6 +29,12 @@ public class ReviewController {
 		model.addAttribute("list", service.getList());
 	}
 	
+	// 새 게시글 추가 (페이지 확인용)
+	@GetMapping("/register")
+	public void register() {
+		
+	}
+	
 	// 새 게시글 추가
 	@PostMapping("/register")
 	public String register(ReviewVO review, RedirectAttributes rttr) {
@@ -39,11 +45,12 @@ public class ReviewController {
 	}
 	
 	// 게시글 내용 조회
-	@GetMapping("/get")
+	@GetMapping({"/get", "/modify"})
 	public void get(@RequestParam("b_num") Long b_num, Model model) {
 		model.addAttribute("review", service.get(b_num));
 	}
 	
+	// 게시글 수정
 	@PostMapping("/modify")
 	public String modify(ReviewVO review, RedirectAttributes rttr) {
 		log.info("수정할 게시글 내용 -> " + review);

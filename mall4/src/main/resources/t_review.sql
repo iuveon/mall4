@@ -1,4 +1,7 @@
+-- t_review로 시퀀스 이름 변경함
 create sequence seq_board_num;
+
+rename seq_board_num to seq_review_num;
 
 -- t_review로 테이블 이름 변경함
 create table t_board(
