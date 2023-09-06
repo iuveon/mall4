@@ -46,10 +46,22 @@ public class ReviewController {
 	
 	@PostMapping("/modify")
 	public String modify(ReviewVO review, RedirectAttributes rttr) {
-		log.info("게시글 수정 -> " + review);
+		log.info("수정할 게시글 내용 -> " + review);
 		
 		if(service.modify(review)) {
-			rttr.addAttribute("result", "게시글 내용 수정");
+			rttr.addAttribute("result", "게시글 내용 수정 성공");
+		}
+		
+		return "redirect:/review/list";
+	}
+	
+	// 게시글 삭제
+	@PostMapping("/remove")
+	public String remove(@RequestParam("b_num") Long b_num, RedirectAttributes rttr) {
+		log.info("삭제할 게시글 번호 -> " + b_num);
+		
+		if(service.remove(b_num)) {
+			rttr.addFlashAttribute("result", "게시글 내용 삭제 성공");
 		}
 		
 		return "redirect:/review/list";

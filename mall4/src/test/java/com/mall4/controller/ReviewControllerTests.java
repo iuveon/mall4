@@ -80,4 +80,14 @@ public class ReviewControllerTests {
 		log.info("====== controller.testModify() 결과 ======");
 		log.info(resultPage);
 	}
+	
+	@Test
+	public void testRemove() throws Exception {
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/review/remove")
+				.param("b_num", "9"))
+				.andReturn().getModelAndView().getViewName();
+		
+		log.info("====== controller.testRemove() 결과 ======");
+		log.info(resultPage);
+	}
 }
