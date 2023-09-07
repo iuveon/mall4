@@ -48,6 +48,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public boolean remove(Long b_num) {
 		return mapper.delete(b_num) == 1;
 	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
 	
 	
 }

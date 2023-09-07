@@ -36,7 +36,10 @@ public class ReviewController {
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		model.addAttribute("list", service.getList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 146));
+
+		int total = service.getTotal(cri);
+		log.info("전체 게시글 개수 -> " + total);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	// 새 게시글 추가 (페이지 확인용)

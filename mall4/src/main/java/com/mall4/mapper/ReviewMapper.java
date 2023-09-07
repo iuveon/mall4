@@ -25,6 +25,7 @@ public interface ReviewMapper {
 	// 게시글 삭제
 	public int delete(Long b_num);
 	
+	// 전체 게시글 개수
+	public int getTotalCount(Criteria cri);
 	
-		
 }

@@ -50,5 +50,10 @@
 	<delete id="delete">
 		DELETE FROM t_review WHERE b_num = #{b_num}
 	</delete>
+	
+	<!-- 전체 게시글 개수 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM t_review WHERE b_num > 0
+	</select>
 
 </mapper>

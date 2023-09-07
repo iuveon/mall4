@@ -25,4 +25,6 @@ public interface ReviewService {
 	// 게시글 삭제
 	public boolean remove(Long b_num);
 
+	// 전체 게시글 개수
+	public int getTotal(Criteria cri);
 }
