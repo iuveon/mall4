@@ -21,6 +21,8 @@
 		
 		<form id="operForm" action="/review/modify" method="get">
 			<input type="hidden" id="b_num" name="b_num" value='<c:out value="${review.b_num}"/>'>
+			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 		</form>
 	</div>
 </body>

@@ -21,7 +21,7 @@ select * from all_constraints where table_name = 'T_BOARD';
 
 alter table t_board modify(b_editdate default sysdate);
 
-select * from t_review ORDER BY b_num DESC;
+select /*+INDEX_DESC(t_review pk_board) */ * from t_review;
 
 alter table t_board rename to t_review;
 

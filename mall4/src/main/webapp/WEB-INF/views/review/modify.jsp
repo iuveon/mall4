@@ -14,6 +14,9 @@
 	<div>
 		<form action="/review/modify" method="post">
 		
+		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+		
 			<div><label>번호</label><input name="b_num" value='<c:out value="${review.b_num}"/>' readonly="readonly"></div>
 			<div><label>제목</label><input name="b_title" value='<c:out value="${review.b_title}"/>'></div>
 			<div><label>내용</label><textarea name="b_content" rows="3"><c:out value="${review.b_content}"/></textarea></div>
@@ -47,7 +50,15 @@ $(document).ready(function() {
 		// data-oper="list"인 경우 list 페이지로 이동
 		} else if(operation === 'list') {
 			formObj.attr("action", "/review/list").attr("method", "get");
-			formObj.empty();	// empty() : 선택된 요소의 하위요소 제거
+			
+			// clone() : 선택한 요소를 복제
+			var pageNumTag = $("input[name='pageNum']").clone();	
+			var amountTag = $("input[name='amount']").clone();
+			
+			// empty() : 선택된 요소의 하위요소 제거
+			formObj.empty();
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
 		}
 		
 		formObj.submit();
