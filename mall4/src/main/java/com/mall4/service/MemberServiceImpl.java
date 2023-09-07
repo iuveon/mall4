@@ -21,33 +21,41 @@ public class MemberServiceImpl implements MemberService { // MemberService 인�
 	
 	// 메소드
 	@Override
-	public List<MemberVO> getList() {
+	public List<MemberVO> getList() { // 회원 전체 리스트 가져오기
 		log.info("========== ServiceImpl.getList ==========");
 		return mapper.getList();
 	}
 
 	@Override
-	public MemberVO info(String m_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO info(String m_id) { // id를 이용하여 일치하는 회원 찾기 (마이페이지)
+		log.info("========== ServiceImpl.info ==========");
+		return mapper.info(m_id);
 	}
 
 	@Override
-	public void insert(MemberVO member) {
-		// TODO Auto-generated method stub
-		
+	public void insert(MemberVO member) { // 회원 가입
+		log.info("========== ServiceImpl.insert ==========");
+		mapper.insert(member);
 	}
 
 	@Override
-	public int update(MemberVO member) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean update(MemberVO member) { // 회원 정보 수정
+		log.info("========== ServiceImpl.update ==========");
+		return mapper.update(member) == 1;
 	}
 
 	@Override
-	public int delete(MemberVO member) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean delete(MemberVO member) { // 회원 탈퇴
+		log.info("========== ServiceImpl.delete ==========");
+		return mapper.delete(member) == 1;
 	}
+
+	/*
+	@Override
+	public MemberVO login(String m_id, String m_pw) { // 로그인
+		log.info("========== ServiceImpl.login ==========");
+		return mapper.login(m_id, m_pw);
+	}
+	*/
 
 }
