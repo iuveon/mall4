@@ -81,4 +81,14 @@ public class ReviewMapperTests {
 		log.info("====== mapper.testDelete() 결과 ======");
 		log.info("게시글 삭제 성공시 결과값 1 -> " + mapper.delete(3L));
 	}
+	
+	@Test
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setType("TC");
+		cri.setKeyword("()");
+		
+		List<ReviewVO> list = mapper.getListWithPaging(cri);
+		list.forEach(review -> log.info(review));
+	}
 }

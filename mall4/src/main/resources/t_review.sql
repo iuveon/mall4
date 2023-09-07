@@ -31,3 +31,6 @@ insert into t_review(b_num, b_title, b_content, b_writer)
 	 
 insert into t_review(b_num, b_title, b_content, b_writer)
 	 values (seq_review_num.nextval, '테스트제목', '테스트내용', 'id2');
+	 
+insert into t_review(b_num, b_title, b_content, b_writer)
+	 values (seq_review_num.nextval, '검색테스트', '검색테스트', 'id3');
