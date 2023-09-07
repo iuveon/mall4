@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- XML을 활용한 공통 코드 -->
+
+<mapper namespace="com.mall4.mapper.MemberMapper"><!-- 인터페이스명과 같도록 -->
+
+	<!-- 회원 전체 리스트 가져오기 -->
+	<select id="getList" resultType="com.mall4.domain.MemberVO">
+		select * from t_member where m_num > 0
+	</select>
+	
+	<!-- id를 이용하여 일치하는 회원 찾기 (마이페이지) -->
+	<select id="info" resultType="com.mall4.domain.MemberVO">
+		select * from t_member where m_id = #{m_id}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="insert">
+		insert into t_member values (seq_member_num.nextval, #{m_id}, #{m_pw}, #{m_name}, #{m_email1}, #{m_email2}, #{m_phone}, #{m_birth}, #{m_zipcode}, #{m_address1}, #{m_address2}, #{m_restAddress}, sysdate)
+	</insert>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="update">
+		update t_member set m_birth = #{m_birth}, m_zipcode = #{m_zipcode}, m_address1 = #{m_address1}, m_address2 = #{m_address2}, m_restAddress = #{m_restAddress} where m_id = #{m_id}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+		delete from t_member where m_id = #{m_id}
+	</delete>
+	
+</mapper>
