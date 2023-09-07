@@ -36,11 +36,19 @@ public class ReviewControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
+//	@Test
+//	public void testList() throws Exception {
+//		log.info(
+//			mockMvc.perform(MockMvcRequestBuilders.get("/review/list"))
+//			.andReturn().getModelAndView().getModelMap());
+//	}
+	
 	@Test
-	public void testList() throws Exception {
-		log.info(
-			mockMvc.perform(MockMvcRequestBuilders.get("/review/list"))
-			.andReturn().getModelAndView().getModelMap());
+	public void testListPaging() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/review/list")
+				.param("pageNum", "2")
+				.param("amount", "10"))
+				.andReturn().getModelAndView().getModelMap());
 	}
 	
 	@Test

@@ -27,7 +27,7 @@ alter table t_board rename to t_review;
 
 
 insert into t_review(b_num, b_title, b_content, b_writer)
-	 values (seq_board_num.nextval, '테스트제목', '테스트내용', 'id1');
+	 values (seq_review_num.nextval, '테스트제목', '테스트내용', 'id1');
 	 
 insert into t_review(b_num, b_title, b_content, b_writer)
-	 values (seq_board_num.nextval, '테스트제목', '테스트내용', 'id2');
+	 values (seq_review_num.nextval, '테스트제목', '테스트내용', 'id2');

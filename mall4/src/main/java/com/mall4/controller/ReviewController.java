@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mall4.domain.Criteria;
 import com.mall4.domain.ReviewVO;
 import com.mall4.service.ReviewService;
 
@@ -24,9 +25,15 @@ public class ReviewController {
 	private ReviewService service;
 	
 	// 전체 게시글 목록 조회
+//	@GetMapping("/list")
+//	public void list(Model model) {
+//		model.addAttribute("list", service.getList());
+//	}
+	
+	// 전체 게시글 목록 조회 (페이징)
 	@GetMapping("/list")
-	public void list(Model model) {
-		model.addAttribute("list", service.getList());
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("list", service.getList(cri));
 	}
 	
 	// 새 게시글 추가 (페이지 확인용)

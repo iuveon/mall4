@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mall4.domain.Criteria;
 import com.mall4.domain.ReviewVO;
 import com.mall4.mapper.ReviewMapper;
 
@@ -18,9 +19,14 @@ public class ReviewServiceImpl implements ReviewService {
 	@Setter(onMethod_ = @Autowired)
 	private ReviewMapper mapper;
 
+//	@Override
+//	public List<ReviewVO> getList() {
+//		return mapper.getList();
+//	}
+	
 	@Override
-	public List<ReviewVO> getList() {
-		return mapper.getList();
+	public List<ReviewVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override
