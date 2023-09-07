@@ -2,6 +2,8 @@ package com.mall4.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.mall4.domain.MemberVO;
 
 public interface MemberService {
@@ -12,8 +14,10 @@ public interface MemberService {
 	
 	public void insert(MemberVO member); // 회원 가입
 	
-	public int update(MemberVO member); // 회원 정보 수정
+	public boolean update(MemberVO member); // 회원 정보 수정
 	
-	public int delete(MemberVO member); // 회원 탈퇴
+	public boolean delete(MemberVO member); // 회원 탈퇴
+	
+	// public MemberVO login(@Param("m_id") String m_id, @Param("m_pw") String m_pw); // 로그인
 
 }

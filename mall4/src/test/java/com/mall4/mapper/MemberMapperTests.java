@@ -74,4 +74,14 @@ public class MemberMapperTests {
 		mapper.delete(vo);
 	}
 	
+	/*
+	@Test
+	public void testLogin() {
+		String m_id = "testid11";
+		String m_pw = "1234";
+		MemberVO vo = mapper.login(m_id, m_pw);
+		log.info(vo);
+	}
+	*/
+	
 }
