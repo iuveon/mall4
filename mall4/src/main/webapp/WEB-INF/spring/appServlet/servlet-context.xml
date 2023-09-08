@@ -22,5 +22,6 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.mall4.controller" />
-	
+	<context:component-scan base-package="com.mall4.persistence" />
+
 </beans:beans>

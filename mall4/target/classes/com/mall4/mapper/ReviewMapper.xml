@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mall4.mapper.ReviewMapper">
+
+	<!-- 전체 게시글 목록 조회 -->
+	<select id="getList" resultType="com.mall4.domain.ReviewVO">
+		<![CDATA[
+		SELECT * FROM t_review where b_num > 0	
+		]]>
+	</select>
+	
+	<!-- MyBatis의 sql 태그로 sql을 별도로 보관하고 다른 태그 안에 include 가능 -->
+	<sql id="criteria">
+	
+		<!-- prefixOverrides : trim 문 안에 맨앞에 OR이 올 경우 삭제 -->
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							b_title LIKE '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							b_content LIKE '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							b_writer LIKE '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+		
+	</sql>
+	
+	<!-- 전체 게시글 목록 조회(페이징) -->
+	<select id="getListWithPaging" resultType="com.mall4.domain.ReviewVO">
+		<![CDATA[
+		SELECT b_num, b_title, b_content, b_writer, b_regdate, b_editdate
+		  FROM (SELECT /*+INDEX_DESC(t_review pk_board) */
+		  			   ROWNUM rn, b_num, b_title, b_content, b_writer, b_regdate, b_editdate
+		  	      FROM t_review 
+		  	     WHERE
+		]]>
+		
+		<include refid="criteria"></include>
+		  	     
+		<![CDATA[
+		  	           ROWNUM <= #{pageNum} * #{amount})
+		 WHERE rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	
+	<!-- 전체 게시글 개수 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM t_review WHERE 
+		
+		<include refid="criteria"></include>
+											b_num > 0
+	</select>
+	
+	<!-- 새 게시글 추가 -->
+	<insert id="insert">
+	
+		<selectKey keyProperty="b_num" order="BEFORE" resultType="long">
+			SELECT seq_review_num.NEXTVAL FROM dual
+		</selectKey>
+		
+		INSERT INTO t_review (b_num, b_title, b_content, b_writer) 
+			 VALUES (#{b_num}, #{b_title}, #{b_content}, #{b_writer})
+	</insert>
+	
+	<!-- 게시글 내용 조회 -->
+	<select id="read" resultType="com.mall4.domain.ReviewVO">
+		SELECT * FROM t_review WHERE b_num = #{b_num}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="update">
+		UPDATE t_review 
+		   SET b_title = #{b_title}, b_content = #{b_content}, b_writer = #{b_writer}, b_editdate = SYSDATE
+		 WHERE b_num = #{b_num}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		DELETE FROM t_review WHERE b_num = #{b_num}
+	</delete>
+
+</mapper>
