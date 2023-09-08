@@ -16,8 +16,8 @@
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property> 
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
 		
-		<property name="username" value="book_ex"></property>
-		<property name="password" value="book_ex"></property>
+		<property name="username" value="user_4c"></property>
+		<property name="password" value="team4user4c"></property>
 	</bean>
 
 	<!-- HikariCP configuration -->
@@ -29,6 +29,9 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-	<mybatis-spring:scan base-package="org.zerock.mapper"/> 
-	<context:component-scan base-package="org.zerock.service"/>	
+	<mybatis-spring:scan base-package="com.mall4.mapper"/> 
+	<context:component-scan base-package="com.mall4.service"/>
+	<context:component-scan base-package="com.mall4.mapper"/>
+	<context:component-scan base-package="com.mall4.controller"/>
+	<context:component-scan base-package="com.mall4.domain"/>	
 </beans>
