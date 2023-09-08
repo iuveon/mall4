@@ -10,10 +10,10 @@ create table t_member(
 	m_phone varchar2(13) not null unique,
 	m_birth varchar2(8),
 	m_zipcode varchar2(5),
-	m_address1 varchar2(100), -- 도로명 주소
-	m_address2 varchar2(100), -- 지번 주소
-	m_restAddress varchar2(100), -- 나머지 주소(상세 주소)
-	m_regdate date default sysdate not null -- 가입일
+	m_address1 varchar2(100),				-- 도로명 주소
+	m_address2 varchar2(100),				-- 지번 주소
+	m_restAddress varchar2(100),			-- 나머지 주소(상세 주소)
+	m_regdate date default sysdate not null	-- 가입일
 );
 
 alter table t_member add constraint pk_member primary key (m_num);
