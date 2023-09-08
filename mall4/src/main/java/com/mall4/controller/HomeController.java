@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 @Log4j2
 public class HomeController {
-	
+
 	@RequestMapping(value = "/main") // http://localhost/main
 	public String home() {
 		log.info("========== main ==========");
