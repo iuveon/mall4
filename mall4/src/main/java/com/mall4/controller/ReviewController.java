@@ -69,15 +69,15 @@ public class ReviewController {
 		log.info("수정할 게시글 내용 -> " + review);
 		
 		if(service.modify(review)) {
-			rttr.addAttribute("result", "게시글 내용 수정 성공");
+			rttr.addFlashAttribute("result", "게시글 내용 수정 성공");
 		}
 		
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getKeyword());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/review/list";
+		return "redirect:/review/list" + cri.getListLink();
 	}
 	
 	// 게시글 삭제
@@ -89,11 +89,11 @@ public class ReviewController {
 			rttr.addFlashAttribute("result", "게시글 내용 삭제 성공");
 		}
 		
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getKeyword());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/review/list";
+		return "redirect:/review/list" + cri.getListLink();
 	}
 }
