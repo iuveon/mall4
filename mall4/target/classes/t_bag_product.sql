@@ -13,7 +13,6 @@ create table t_bag_product(
 	p_color varchar2(50) not null
 );
 
-delete from t_bag_product
 alter table t_bag_product add constraint pk_bag_product primary key (p_num);
 
 insert into t_bag_product values (seq_p_num.nextval,'당근숄더백',10000,3,'숄더백','m','귀여운 당근모양 숄더백','주황' );

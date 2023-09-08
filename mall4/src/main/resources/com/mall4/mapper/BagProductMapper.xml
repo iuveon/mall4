@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 여기까지가 xml 공통코드 -->
+
+<mapper namespace="com.mall4.mapper.BagProductMapper"><!--호출될 인터페이스명과 일치시켜야 함 -->
+
+	<!--전체목록 조회 -->
+	<select id="getList" resultType="com.mall4.domain.BagProductVO">
+  		<![CDATA[
+  			select * from t_bag_product where p_num > 0
+  		]]>
+	</select>
+
+
+	<!-- 번호로 조회 -->
+	<select id="read" resultType="com.mall4.domain.BagProductVO">
+		select * from t_bag_product where p_num = #{p_num}
+	</select>
+
+
+
+	<!-- 상품추가 -->
+	<insert id="insert">
+
+		insert into t_bag_product
+		values (seq_p_num.nextval, #{p_name}, #{p_price}, #{p_quantity}, #{p_cate},
+		#{p_size}, #{p_desc}, #{p_color})
+	</insert>
+
+	<!-- SelectKey 상품추가 -->
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="p_num" order="BEFORE" resultType="int"> 
+			select seq_p_num.nextval from dual 
+		</selectKey>
+		insert into t_bag_product
+		values (#{p_num}, #{p_name}, #{p_price}, #{p_quantity}, #{p_cate},
+		#{p_size}, #{p_desc}, #{p_color})
+	</insert>
+
+
+	<!-- 상품수정 -->
+	<update id="update">
+		update t_bag_product
+		set p_quantity = #{p_quantity}, p_price = #{p_price}, p_color =
+		#{p_color}
+		where p_num = #{p_num}
+	</update>
+
+
+	<!-- 상품삭제 -->
+	<delete id="delete">
+		delete t_bag_product where p_num = #{p_num}
+	</delete>
+
+</mapper>
