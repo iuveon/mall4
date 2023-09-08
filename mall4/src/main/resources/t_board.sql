@@ -12,3 +12,9 @@ create table t_board(
 alter table t_board add constraint pk_board primary key (b_num);
 
 alter table t_board add constraint board_fk_member foreign key (b_writer) references t_member (m_id);
+alter table t_board drop constraint board_fk_member; -- drop fk
+
+select * from all_constraints where table_name = 'T_BOARD';
+select * from all_constraints where table_name = 'T_IMAGE';
+
+drop table t_board;
