@@ -40,7 +40,7 @@
 	<select id="getListWithPaging" resultType="com.mall4.domain.ReviewVO">
 		<![CDATA[
 		SELECT b_num, b_title, b_content, b_writer, b_regdate, b_editdate
-		  FROM (SELECT /*+INDEX_DESC(t_review pk_review) */
+		  FROM (SELECT /*+INDEX_DESC(t_review pk_board) */
 		  			   ROWNUM rn, b_num, b_title, b_content, b_writer, b_regdate, b_editdate
 		  	      FROM t_review 
 		  	     WHERE
