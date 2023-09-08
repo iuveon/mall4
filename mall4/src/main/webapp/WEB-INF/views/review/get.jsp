@@ -1,31 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>게시글 내용 조회</div>
-	
-	<div>
-		<div><label>번호</label><input name="b_num" value='<c:out value="${review.b_num}"/>' readonly="readonly"></div>
-		<div><label>제목</label><input name="b_title" value='<c:out value="${review.b_title}"/>' readonly="readonly"></div>
-		<div><label>내용</label><textarea name="b_content" rows="3" readonly="readonly"><c:out value="${review.b_content}"/></textarea></div>
-		<div><label>작성자</label><input name="b_writer" value='<c:out value="${review.b_writer}"/>' readonly="readonly"></div>
-		
-		<button id="modBtn" data-oper="modify">수정하기</button>
-		<button id="rtnBtn" data-oper="list">돌아가기</button>
-		
-		<form id="operForm" action="/review/modify" method="get">
-			<input type="hidden" id="b_num" name="b_num" value='<c:out value="${review.b_num}"/>'>
-			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-			<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
-		</form>
+<%@include file="../includes/header.jsp"%>
+
+	<!-- Start Contact Form -->
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="block">
+				<div class="row justify-content-center">
+					<div class="col-md-8 col-lg-8 pb-4">
+						<h2>게시글 내용 조회</h2>
+						
+							<div>
+								<div class="form-group"><label class="text-black">번호</label><input type="text" class="form-control" name="b_num" value='<c:out value="${review.b_num}"/>' readonly="readonly"></div>
+								<div class="form-group"><label class="text-black"><strong>제목</strong></label><input type="text" class="form-control" name="b_title" value='<c:out value="${review.b_title}"/>' readonly="readonly"></div>
+								<div class="form-group"><label class="text-black"><strong>내용</strong></label><textarea class="form-control" name="b_content" rows="3" readonly="readonly"><c:out value="${review.b_content}"/></textarea></div>
+								<div class="form-group mb-5"><label class="text-black"><strong>작성자</strong></label><input type="text" class="form-control" name="b_writer" value='<c:out value="${review.b_writer}"/>' readonly="readonly"></div>
+								
+								<button id="modBtn" data-oper="modify" class="btn btn-primary-hover-outline">수정하기</button>
+								<button id="rtnBtn" data-oper="list" class="btn btn-primary-hover-outline">돌아가기</button>
+								
+								<form id="operForm" action="/review/modify" method="get">
+									<input type="hidden" id="b_num" name="b_num" value='<c:out value="${review.b_num}"/>'>
+									<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+									<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+									<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+									<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
+								</form>
+							</div>
+			
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
