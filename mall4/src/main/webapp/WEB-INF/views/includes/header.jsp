@@ -42,7 +42,7 @@
 						<li><a class="nav-link" href="../bag/list">가방</a></li><!-- 수정필요 -->
 						<li><a class="nav-link" href="#">Q&A게시판</a></li><!-- 수정필요 -->
 						<li><a class="nav-link" href="../review/list">후기</a></li>
-					</ul>
+
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="../member/join">회원가입</a></li>

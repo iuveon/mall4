@@ -2,95 +2,86 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@include file="../includes/header.jsp"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상품 후기 게시판</title>
-<style>
-	ul {
-		list-style:none;
-	}
-	
-	li {
-		float:left;
-		margin-right:20px;
-	}
-</style>
-</head>
-<body>
-	<div><button id="regBtn" type="button">상품 후기 등록</button></div>
-
-	<!-- 게시판 테이블 -->
-	<table border="1">
-		<tr>
-			<th>#번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>수정일</th>
-		</tr>
-	
-	<c:forEach items="${list}" var="review">
-		<tr>
-			<td><c:out value="${review.b_num}"></c:out></td>
-			<td><a class="move" href='<c:out value="${review.b_num}"/>'><c:out value="${review.b_title}"/></a></td>
-			<td><c:out value="${review.b_writer}"></c:out></td>
-			<td><fmt:formatDate type="both" dateStyle="long" value="${review.b_regdate}"/></td>
-			<td><fmt:formatDate type="both" dateStyle="long" value="${review.b_editdate}"/></td>
-		</tr>
-	</c:forEach>
-	
-	</table>
-	
-	<!-- 검색 기능 -->
-	<div>
-		<form id="searchForm" action="/review/list" method="get">
-			<select name="type">
-				<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
-				<option value="T" <c:out value="${pageMaker.cri.type == 'T' ? 'selected' : ''}"/>>제목</option>
-				<option value="C" <c:out value="${pageMaker.cri.type == 'C' ? 'selected' : ''}"/>>내용</option>
-				<option value="W" <c:out value="${pageMaker.cri.type == 'W' ? 'selected' : ''}"/>>작성자</option>
-				<option value="TC" <c:out value="${pageMaker.cri.type == 'TC' ? 'selected' : ''}"/>>제목 OR 내용</option>
-				<option value="TW" <c:out value="${pageMaker.cri.type == 'TW' ? 'selected' : ''}"/>>내용 OR 작성자</option>
-				<option value="TWC" <c:out value="${pageMaker.cri.type == 'TWC' ? 'selected' : ''}"/>>제목 OR 내용 OR 작성자</option>
-			</select>
+	<div class="untree_co-section product-section before-footer-section">
+		<div class="container">
+			<div class="panel-heading mb-5">
+				<button id="regBtn" type="button" class="btn btn-xs pull-right">상품 후기 등록</button>
+			</div>
 			
-			<!-- 검색한 후에 검색어가 페이지에 남아 있도록 값 저장 -->
-			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
 			
-			<!-- 검색했을 때 나오는 총 페이지 수와 게시글 수의 값 전달 -->
-			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-			<button>검색</button>
-		</form>
-	</div>
-	
-	<!-- 페이징 기능 -->
-	<div>
-		<ul class="pagination">
-			<c:if test="${pageMaker.prev}">
-				<li class="paginate_button previous"><a href="${pageMaker.startPage - 1}">[이전으로]</a></li>
-			</c:if>
+			<!-- 게시판 테이블 -->
+			<table border="1" class="site-blocks-table" style="width: 100% ; text-align: center; border: solid;">
+				<tr	style="border:solid;">
+					<th style="border:solid;">#번호</th>
+					<th style="border:solid;">제목</th>
+					<th style="border:solid;">작성자</th>
+					<th style="border:solid;">작성일</th>
+					<th style="border:solid;">수정일</th>
+				</tr>
 			
-			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-				<li class="paginate_button"><a href="${num}">${num}</a></li>
+			<c:forEach items="${list}" var="review">
+				<tr>
+					<td style="border:solid;"><c:out value="${review.b_num}"></c:out></td>
+					<td style="border:solid;"><a style="text-decoration: none;" class="move" href='<c:out value="${review.b_num}"/>'><c:out value="${review.b_title}"/></a></td>
+					<td style="border:solid;"><c:out value="${review.b_writer}"></c:out></td>
+					<td style="border:solid;"><fmt:formatDate type="both" dateStyle="long" value="${review.b_regdate}"/></td>
+					<td style="border:solid;"><fmt:formatDate type="both" dateStyle="long" value="${review.b_editdate}"/></td>
+				</tr>
 			</c:forEach>
 			
-			<c:if test="${pageMaker.next}">
-				<li class="paginate_button next"><a href="${pageMaker.endPage + 1}">[다음으로]</a></li>
-			</c:if>
-		</ul>
+			</table>
+			
+			<!-- 검색 기능 -->
+			<div>
+				<form id="searchForm" action="/review/list" method="get">
+					<select name="type">
+						<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
+						<option value="T" <c:out value="${pageMaker.cri.type == 'T' ? 'selected' : ''}"/>>제목</option>
+						<option value="C" <c:out value="${pageMaker.cri.type == 'C' ? 'selected' : ''}"/>>내용</option>
+						<option value="W" <c:out value="${pageMaker.cri.type == 'W' ? 'selected' : ''}"/>>작성자</option>
+						<option value="TC" <c:out value="${pageMaker.cri.type == 'TC' ? 'selected' : ''}"/>>제목 OR 내용</option>
+						<option value="TW" <c:out value="${pageMaker.cri.type == 'TW' ? 'selected' : ''}"/>>내용 OR 작성자</option>
+						<option value="TWC" <c:out value="${pageMaker.cri.type == 'TWC' ? 'selected' : ''}"/>>제목 OR 내용 OR 작성자</option>
+					</select>
+					
+					<!-- 검색한 후에 검색어가 페이지에 남아 있도록 값 저장 -->
+					<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
+					
+					<!-- 검색했을 때 나오는 총 페이지 수와 게시글 수의 값 전달 -->
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+					<button class="btn btn-xs pull-right">검색</button>
+				</form>
+			</div>
+			
+			<!-- 페이징 기능 -->
+			<div>
+				<ul style="list-style: none;" class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li style="float: left; margin-right: 20px;" class="paginate_button previous"><a href="${pageMaker.startPage - 1}">[이전으로]</a></li>
+					</c:if>
+					
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li style="float: left; margin-right: 20px;" class="paginate_button"><a href="${num}">${num}</a></li>
+					</c:forEach>
+					
+					<c:if test="${pageMaker.next}">
+						<li style="float: left; margin-right: 20px;" class="paginate_button next"><a href="${pageMaker.endPage + 1}">[다음으로]</a></li>
+					</c:if>
+				</ul>
+			</div>
+			
+			<!-- 페이징 기능 폼 태그 : 제이쿼리 연동 -->
+			<form id="actionForm" action="/review/list" method="get">
+				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				<input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
+				<input type="hidden" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
+			</form>
+		</div>
 	</div>
-	
-	<!-- 페이징 기능 폼 태그 : 제이쿼리 연동 -->
-	<form id="actionForm" action="/review/list" method="get">
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-		<input type="hidden" name="type" value='<c:out value="${pageMaker.cri.type}"/>'>
-		<input type="hidden" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"/>'>
-	</form>
 	
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>	
 
