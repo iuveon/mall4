@@ -38,7 +38,7 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="../main">Home</a> 
 						</li>
-						<li><a class="nav-link" href="#">의류</a></li><!-- 수정필요 -->
+						<li><a class="nav-link" href="../product/list">의류</a></li><!-- 수정필요 -->
 						<li><a class="nav-link" href="../bag/list">가방</a></li><!-- 수정필요 -->
 						<li><a class="nav-link" href="#">Q&A게시판</a></li><!-- 수정필요 -->
 						<li><a class="nav-link" href="../review/list">후기</a></li>
