@@ -32,7 +32,7 @@ public class BagProductController {
 	
 	 @PostMapping("/register") public String register(BagProductVO
 	 bagProductVO, RedirectAttributes rttr) { // 작업이 끝난후 다시 목록화면으로 이동하기 위해 //
-	 //register()를 String ㅌ차입으로 지정 RedirectAttributes를 파라미터로 지정 // 추가적으로 새롭게 등록된 상품의
+	 //register()를 String 타입으로 지정 RedirectAttributes를 파라미터로 지정 // 추가적으로 새롭게 등록된 상품의
 	 //번호를 같이 전달하기위해 RedirectAttributes를 이용 // 리턴시 redirect: 접두어 사용 - 스프링 mvc가 내부적으로
 	 //response.sendRedirect()를 처리해주기때문에 log.info("register : " + bagProductVO);
 	 bagProductService.register(bagProductVO);

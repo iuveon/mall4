@@ -19,6 +19,7 @@
 <link href="../../../resources/css/tiny-slider.css" rel="stylesheet">
 <link href="../../../resources/css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <title>mall4</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
 
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="../member/join">회원가입</a></li>
+						<li><a class="nav-link" href="../member/insert">회원가입</a></li>
 						<li><a class="nav-link" href="../member/list">회원정보</a></li>
 					</ul>
 				</div>

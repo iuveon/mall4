@@ -38,13 +38,11 @@
 		values (#{p_num}, #{p_name}, #{p_price}, #{p_quantity}, #{p_cate},
 		#{p_size}, #{p_desc}, #{p_color})
 	</insert>
-
-
+	
 	<!-- 상품수정 -->
 	<update id="update">
 		update t_bag_product
-		set p_quantity = #{p_quantity}, p_price = #{p_price}, p_color =
-		#{p_color}
+		set p_quantity = #{p_quantity}, p_price = #{p_price}, p_color = #{p_color}, p_name = #{p_name}, p_desc = #{p_desc}, p_size = #{p_size}
 		where p_num = #{p_num}
 	</update>
 
